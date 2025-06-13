@@ -1,6 +1,6 @@
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad de los Andes (Bogotá - Colombia)
- * Departamento de Ingeniería de Sistemas y Computación 
+ * Universidad de los Andes (BogotÃ¡ - Colombia)
+ * Departamento de IngenierÃ­a de Sistemas y ComputaciÃ³n 
  * Licenciado bajo el esquema Academic Free License version 2.1 
  *
  * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
@@ -22,10 +22,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 /**
- * Panel con las opciones de ordenamiento y búsqueda.
+ * Panel con las opciones de ordenamiento y bÃºsqueda.
  */
-public class PanelOpciones extends JPanel implements ActionListener
-{
+public class PanelOpciones extends JPanel implements ActionListener {
     // -----------------------------------------------------------------
     // Constantes
     // -----------------------------------------------------------------
@@ -41,46 +40,46 @@ public class PanelOpciones extends JPanel implements ActionListener
     private final static String BUSCAR = "Buscar";
 
     /**
-     * Constante que representa la opción de ordenamiento por nombre.
+     * Constante que representa la opciï¿½n de ordenamiento por nombre.
      */
     private final static String ORDENAR_NOMBRE = "Nombre";
 
     /**
-     * Constante que representa la opción de ordenamiento por año de elaboración.
+     * Constante que representa la opciÃ³n de ordenamiento por aÃ±o de elaboraciÃ³n.
      */
-    private final static String ORDENAR_ANHO = "Año de elaboración";
+    private final static String ORDENAR_ANHO = "AÃ±o de elaboraciÃ³n";
 
     /**
-     * Constante que representa la opción de ordenamiento por lugar de origen.
+     * Constante que representa la opciï¿½n de ordenamiento por lugar de origen.
      */
     private final static String ORDENAR_ORIGEN = "Lugar de origen";
 
     /**
-     * Constante que representa la opción de búsqueda por nombre.
+     * Constante que representa la opciÃ³n de bÃºsqueda por nombre.
      */
     private final static String BUSCAR_NOMBRE = "Nombre";
 
     /**
-     * Constante que representa la opción de búsqueda por tipo.
+     * Constante que representa la opciÃ³n de bÃºsqueda por tipo.
      */
     private final static String BUSCAR_TIPO = "Tipo";
 
     /**
-     * Constante que representa la opción de búsqueda del vino más dulce.
+     * Constante que representa la opciÃ³n de bÃºsqueda del vino mÃ¡s dulce.
      */
-    private final static String BUSCAR_MAS_DULCE = "Más dulce";
+    private final static String BUSCAR_MAS_DULCE = "MÃ¡s dulce";
 
     /**
-     * Constante que representa la opción de búsqueda del vino más seco.
+     * Constante que representa la opciÃ³n de bÃºsqueda del vino mÃ¡s seco.
      */
-    private final static String BUSCAR_MAS_SECO = "Más seco";
+    private final static String BUSCAR_MAS_SECO = "MÃ¡s seco";
 
     // -----------------------------------------------------------------
     // Atributos
     // -----------------------------------------------------------------
 
     /**
-     * Ventana principal de la aplicación.
+     * Ventana principal de la aplicaciÃ³n.
      */
     private InterfazCupiCava principal;
 
@@ -91,20 +90,20 @@ public class PanelOpciones extends JPanel implements ActionListener
     /**
      * Combo box con las opciones de ordenamiento.
      */
-    private JComboBox comboOrdenamiento;
+    private JComboBox<String> comboOrdenamiento;
 
     /**
-     * Combo box con las opciones de búsqueda.
+     * Combo box con las opciones de bÃºsqueda.
      */
-    private JComboBox comboBusqueda;
+    private JComboBox<String> comboBusqueda;
 
     /**
-     * Botón para ordenar.
+     * BotÃ³n para ordenar.
      */
     private JButton btnOrdenar;
 
     /**
-     * Botón para buscar.
+     * BotÃ³n para buscar.
      */
     private JButton btnBuscar;
 
@@ -114,93 +113,78 @@ public class PanelOpciones extends JPanel implements ActionListener
 
     /**
      * Constructor del panel.
-     * @param pPrincipal Ventana principal de la aplicación. pPrincipal != null.
+     * 
+     * @param pPrincipal Ventana principal de la aplicaciÃ³n. pPrincipal != null.
      */
-    public PanelOpciones( InterfazCupiCava pPrincipal )
-    {
+    public PanelOpciones(InterfazCupiCava pPrincipal) {
         principal = pPrincipal;
 
-        setLayout( new GridLayout( 1, 2 ) );
+        setLayout(new GridLayout(1, 2));
 
-        JPanel aux = new JPanel( );
-        aux.setLayout( new GridLayout( 1, 2 ) );
-        aux.setBorder( new CompoundBorder( new EmptyBorder( 0, 10, 0, 10 ), new TitledBorder( "Ordenar" ) ) );
+        JPanel aux = new JPanel();
+        aux.setLayout(new GridLayout(1, 2));
+        aux.setBorder(new CompoundBorder(new EmptyBorder(0, 10, 0, 10), new TitledBorder("Ordenar")));
 
-        comboOrdenamiento = new JComboBox( );
-        comboOrdenamiento.setBorder( new EmptyBorder( 0, 0, 0, 10 ) );
-        comboOrdenamiento.addItem( ORDENAR_NOMBRE );
-        comboOrdenamiento.addItem( ORDENAR_ANHO );
-        comboOrdenamiento.addItem( ORDENAR_ORIGEN );
-        aux.add( comboOrdenamiento );
+        comboOrdenamiento = new JComboBox<String>();
+        comboOrdenamiento.setBorder(new EmptyBorder(0, 0, 0, 10));
+        comboOrdenamiento.addItem(ORDENAR_NOMBRE);
+        comboOrdenamiento.addItem(ORDENAR_ANHO);
+        comboOrdenamiento.addItem(ORDENAR_ORIGEN);
+        aux.add(comboOrdenamiento);
 
-        btnOrdenar = new JButton( ORDENAR );
-        btnOrdenar.setActionCommand( ORDENAR );
-        btnOrdenar.addActionListener( this );
-        aux.add( btnOrdenar );
+        btnOrdenar = new JButton(ORDENAR);
+        btnOrdenar.setActionCommand(ORDENAR);
+        btnOrdenar.addActionListener(this);
+        aux.add(btnOrdenar);
 
-        add( aux );
+        add(aux);
 
-        JPanel aux2 = new JPanel( );
-        aux2.setLayout( new GridLayout( 1, 2 ) );
-        aux2.setBorder( new CompoundBorder( new EmptyBorder( 0, 10, 0, 10 ), new TitledBorder( "Buscar" ) ) );
+        JPanel aux2 = new JPanel();
+        aux2.setLayout(new GridLayout(1, 2));
+        aux2.setBorder(new CompoundBorder(new EmptyBorder(0, 10, 0, 10), new TitledBorder("Buscar")));
 
-        comboBusqueda = new JComboBox( );
-        comboBusqueda.setBorder( new EmptyBorder( 0, 0, 0, 10 ) );
-        comboBusqueda.addItem( BUSCAR_NOMBRE );
-        comboBusqueda.addItem( BUSCAR_TIPO );
-        comboBusqueda.addItem( BUSCAR_MAS_DULCE );
-        comboBusqueda.addItem( BUSCAR_MAS_SECO );
-        aux2.add( comboBusqueda );
+        comboBusqueda = new JComboBox<String>();
+        comboBusqueda.setBorder(new EmptyBorder(0, 0, 0, 10));
+        comboBusqueda.addItem(BUSCAR_NOMBRE);
+        comboBusqueda.addItem(BUSCAR_TIPO);
+        comboBusqueda.addItem(BUSCAR_MAS_DULCE);
+        comboBusqueda.addItem(BUSCAR_MAS_SECO);
+        aux2.add(comboBusqueda);
 
-        btnBuscar = new JButton( BUSCAR );
-        btnBuscar.setActionCommand( BUSCAR );
-        btnBuscar.addActionListener( this );
-        aux2.add( btnBuscar );
+        btnBuscar = new JButton(BUSCAR);
+        btnBuscar.setActionCommand(BUSCAR);
+        btnBuscar.addActionListener(this);
+        aux2.add(btnBuscar);
 
-        add( aux2 );
+        add(aux2);
     }
 
     /**
      * Manejo de los eventos de los botones.
-     * @param pEvento Acción que generó el evento.
+     * 
+     * @param pEvento AcciÃ³n que generÃ³ el evento.
      */
-    public void actionPerformed( ActionEvent pEvento )
-    {
-        String comando = pEvento.getActionCommand( );
-        if( comando.equals( ORDENAR ) )
-        {
-            String ordenamiento = ( String )comboOrdenamiento.getSelectedItem( );
-            if( ordenamiento.equals( ORDENAR_NOMBRE ) )
-            {
-                principal.ordenarPorNombre( );
+    public void actionPerformed(ActionEvent pEvento) {
+        String comando = pEvento.getActionCommand();
+        if (comando.equals(ORDENAR)) {
+            String ordenamiento = (String) comboOrdenamiento.getSelectedItem();
+            if (ordenamiento.equals(ORDENAR_NOMBRE)) {
+                principal.ordenarPorNombre();
+            } else if (ordenamiento.equals(ORDENAR_ANHO)) {
+                principal.ordenarPorAnhoElaboracion();
+            } else if (ordenamiento.equals(ORDENAR_ORIGEN)) {
+                principal.ordenarPorLugarOrigen();
             }
-            else if( ordenamiento.equals( ORDENAR_ANHO ) )
-            {
-                principal.ordenarPorAnhoElaboracion( );
-            }
-            else if( ordenamiento.equals( ORDENAR_ORIGEN ) )
-            {
-                principal.ordenarPorLugarOrigen( );
-            }
-        }
-        else if( comando.equals( BUSCAR ) )
-        {
-            String busqueda = ( String )comboBusqueda.getSelectedItem( );
-            if( busqueda.equals( BUSCAR_NOMBRE ) )
-            {
-                principal.buscarPorNombre( );
-            }
-            else if( busqueda.equals( BUSCAR_TIPO ) )
-            {
-                principal.buscarPorTipo( );
-            }
-            else if( busqueda.equals( BUSCAR_MAS_DULCE ) )
-            {
-                principal.buscarVinoMasDulce( );
-            }
-            else if( busqueda.equals( BUSCAR_MAS_SECO ) )
-            {
-                principal.buscarVinoMasSeco( );
+        } else if (comando.equals(BUSCAR)) {
+            String busqueda = (String) comboBusqueda.getSelectedItem();
+            if (busqueda.equals(BUSCAR_NOMBRE)) {
+                principal.buscarPorNombre();
+            } else if (busqueda.equals(BUSCAR_TIPO)) {
+                principal.buscarPorTipo();
+            } else if (busqueda.equals(BUSCAR_MAS_DULCE)) {
+                principal.buscarVinoMasDulce();
+            } else if (busqueda.equals(BUSCAR_MAS_SECO)) {
+                principal.buscarVinoMasSeco();
             }
         }
     }

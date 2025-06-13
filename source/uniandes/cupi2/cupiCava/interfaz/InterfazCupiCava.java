@@ -1,6 +1,6 @@
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad de los Andes (Bogotá - Colombia)
- * Departamento de Ingeniería de Sistemas y Computación 
+ * Universidad de los Andes (Bogotï¿½ - Colombia)
+ * Departamento de Ingenierï¿½a de Sistemas y Computaciï¿½n 
  * Licenciado bajo el esquema Academic Free License version 2.1 
  *
  * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
@@ -27,16 +27,16 @@ import uniandes.cupi2.cupiCava.mundo.CupiCava;
 import uniandes.cupi2.cupiCava.mundo.Vino;
 
 /**
- * Ventana principal de la aplicación.
+ * Ventana principal de la aplicaciï¿½n.
  */
-public class InterfazCupiCava extends JFrame
-{
+public class InterfazCupiCava extends JFrame {
     // -----------------------------------------------------------------
     // Constantes
     // -----------------------------------------------------------------
 
     /**
-     * Constante que representa la ubicación del archivo con los datos de los vinos de la cava.
+     * Constante que representa la ubicaciï¿½n del archivo con los datos de los v
+     * nos de la cava.
      */
     private final static String RUTA_ARCHIVO = "./data/cava.properties";
 
@@ -69,12 +69,12 @@ public class InterfazCupiCava extends JFrame
     private PanelListaVinos panelListaVinos;
 
     /**
-     * Panel con la información detallada de un vino.
+     * Panel con la informaciï¿½n detallada de un vino.
      */
     private PanelInformacionVino panelInformacionVino;
 
     /**
-     * Panel con las opciones de ordenamiento y búsqueda.
+     * Panel con las opciones de ordenamiento y bï¿½squeda.
      */
     private PanelOpciones panelOpciones;
 
@@ -84,60 +84,57 @@ public class InterfazCupiCava extends JFrame
 
     /**
      * Constructor de la ventana principal.<br>
-     * <b> post: </b> Construye la ventana principal de la aplicación.
+     * <b> post: </b> Construye la ventana principal de la aplicaciï¿½n.
      */
-    public InterfazCupiCava( )
-    {
-        cupiCava = new CupiCava( );
-        cargarVinos( );
+    public InterfazCupiCava() {
+        cupiCava = new CupiCava();
+        cargarVinos();
 
-        setLayout( new BorderLayout( ) );
-        setSize( 700, 550 );
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        setTitle( "CupiCava" );
-        setLocationRelativeTo( null );
-        setResizable( false );
+        setLayout(new BorderLayout());
+        setSize(700, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("CupiCava");
+        setLocationRelativeTo(null);
+        setResizable(false);
 
-        panelImagen = new PanelImagen( );
-        add( panelImagen, BorderLayout.NORTH );
+        panelImagen = new PanelImagen();
+        add(panelImagen, BorderLayout.NORTH);
 
-        panelListaVinos = new PanelListaVinos( this );
-        add( panelListaVinos, BorderLayout.WEST );
+        panelListaVinos = new PanelListaVinos(this);
+        add(panelListaVinos, BorderLayout.WEST);
 
-        panelInformacionVino = new PanelInformacionVino( );
-        add( panelInformacionVino, BorderLayout.CENTER );
+        panelInformacionVino = new PanelInformacionVino();
+        add(panelInformacionVino, BorderLayout.CENTER);
 
-        JPanel aux = new JPanel( );
-        aux.setLayout( new GridLayout( 2, 1 ) );
+        JPanel aux = new JPanel();
+        aux.setLayout(new GridLayout(2, 1));
 
-        panelOpciones = new PanelOpciones( this );
-        aux.add( panelOpciones );
+        panelOpciones = new PanelOpciones(this);
+        aux.add(panelOpciones);
 
-        panelExtension = new PanelExtension( this );
-        aux.add( panelExtension );
+        panelExtension = new PanelExtension(this);
+        aux.add(panelExtension);
 
-        add( aux, BorderLayout.SOUTH );
+        add(aux, BorderLayout.SOUTH);
 
-        actualizarLista( );
+        actualizarLista();
     }
 
     // -----------------------------------------------------------------
-    // Métodos
+    // Mï¿½todos
     // -----------------------------------------------------------------
 
     /**
      * Carga los vinos iniciales de la cava a partir de un archivo de propiedades.
      */
-    private void cargarVinos( )
-    {
-        try
-        {
-            FileInputStream fis = new FileInputStream( new File( RUTA_ARCHIVO ) );
-            Properties propiedades = new Properties( );
-            propiedades.load( fis );
+    private void cargarVinos() {
+        try {
+            FileInputStream fis = new FileInputStream(new File(RUTA_ARCHIVO));
+            Properties propiedades = new Properties();
+            propiedades.load(fis);
 
-            String aux = propiedades.getProperty( "total.vinos" );
-            int numVinos = Integer.parseInt( aux );
+            String aux = propiedades.getProperty("total.vinos");
+            int numVinos = Integer.parseInt(aux);
 
             String dato;
             String nombre;
@@ -149,124 +146,108 @@ public class InterfazCupiCava extends JFrame
             String color;
             String imagen;
 
-            for( int i = 1; i < numVinos + 1; i++ )
-            {
+            for (int i = 1; i < numVinos + 1; i++) {
                 // Carga un vino
                 dato = "vino" + i + ".nombre";
-                nombre = propiedades.getProperty( dato );
+                nombre = propiedades.getProperty(dato);
 
                 dato = "vino" + i + ".presentacion";
-                presentacion = propiedades.getProperty( dato );
+                presentacion = propiedades.getProperty(dato);
 
                 dato = "vino" + i + ".fecha";
-                anho = Integer.parseInt( propiedades.getProperty( dato ) );
+                anho = Integer.parseInt(propiedades.getProperty(dato));
 
                 dato = "vino" + i + ".azucar";
-                contenidoAzucar = Double.parseDouble( propiedades.getProperty( dato ) );
+                contenidoAzucar = Double.parseDouble(propiedades.getProperty(dato));
 
                 dato = "vino" + i + ".tipo";
-                tipo = propiedades.getProperty( dato );
+                tipo = propiedades.getProperty(dato);
 
                 dato = "vino" + i + ".lugar";
-                lugar = propiedades.getProperty( dato );
+                lugar = propiedades.getProperty(dato);
 
                 dato = "vino" + i + ".color";
-                color = propiedades.getProperty( dato );
+                color = propiedades.getProperty(dato);
 
                 dato = "vino" + i + ".imagen";
-                imagen = propiedades.getProperty( dato );
+                imagen = propiedades.getProperty(dato);
 
-                if( nombre != null && !nombre.isEmpty( ) && presentacion != null && !presentacion.isEmpty( ) && anho > 0 && tipo != null && !tipo.isEmpty( ) && contenidoAzucar >= 0 && lugar != null && !lugar.isEmpty( ) && color != null
-                        && !color.isEmpty( ) && imagen != null && !imagen.isEmpty( ) )
-                {
-                    cupiCava.agregarVino( nombre, presentacion, anho, contenidoAzucar, tipo, color, lugar, imagen );
+                if (nombre != null && !nombre.isEmpty() && presentacion != null && !presentacion.isEmpty() && anho > 0
+                        && tipo != null && !tipo.isEmpty() && contenidoAzucar >= 0 && lugar != null && !lugar.isEmpty()
+                        && color != null
+                        && !color.isEmpty() && imagen != null && !imagen.isEmpty()) {
+                    cupiCava.agregarVino(nombre, presentacion, anho, contenidoAzucar, tipo, color, lugar, imagen);
                 }
 
             }
-            fis.close( );
-        }
-        catch( FileNotFoundException e )
-        {
-            e.printStackTrace( );
-        }
-        catch( IOException e )
-        {
-            e.printStackTrace( );
+            fis.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     /**
      * Actualiza la lista de vinos mostrada.
      */
-    private void actualizarLista( )
-    {
-        ArrayList vinos = new ArrayList( );
-        for( int i = 0; i < cupiCava.darVinos( ).size( ); i++ )
-        {
-            Vino actual = ( Vino )cupiCava.darVinos( ).get( i );
-            vinos.add( actual.darNombre( ) );
-        }
-
-        panelListaVinos.refrescarLista( vinos );
+    private void actualizarLista() {
+        panelListaVinos.refrescarLista(cupiCava.darVinos());
     }
 
     /**
-     * Actualiza la información del vino seleccionado.
-     * @param pNombreVino Nombre del vino seleccionado. pNombreVino != null && pNombreVino != "".
+     * Actualiza la informacin del vino seleccionado.
+     * 
+     * @param pNombreVino Nombre del vino seleccionado. pNombreVino != null &&
+     *                    pNombreVino != "".
      */
-    public void actualizarInfoVino( String pNombreVino )
-    {
-        Vino seleccionado = cupiCava.buscarVino( pNombreVino );
-        panelInformacionVino.actualizarInformacion( seleccionado.darNombre( ), seleccionado.darPresentacion( ), seleccionado.darAnhoElaboracion( ), seleccionado.darContenidoAzucar( ), seleccionado.darTipo( ), seleccionado.darLugarOrigen( ),
-                seleccionado.darColor( ), seleccionado.darImagen( ) );
+    public void actualizarInfoVino(String pNombreVino) {
+        Vino seleccionado = cupiCava.buscarVino(pNombreVino);
+        panelInformacionVino.actualizarInformacion(seleccionado.darNombre(), seleccionado.darPresentacion(),
+                seleccionado.darAnhoElaboracion(), seleccionado.darContenidoAzucar(), seleccionado.darTipo(),
+                seleccionado.darLugarOrigen(),
+                seleccionado.darColor(), seleccionado.darImagen());
     }
 
     /**
      * Ordena la lista de vinos por nombre.
      */
-    public void ordenarPorNombre( )
-    {
-        cupiCava.ordenarVinosPorNombre( );
-        actualizarLista( );
+    public void ordenarPorNombre() {
+        cupiCava.ordenarVinosPorNombre();
+        actualizarLista();
     }
 
     /**
-     * Ordena la lista de vinos por año de elaboración.
+     * Ordena la lista de vinos por ao de elaboracin.
      */
-    public void ordenarPorAnhoElaboracion( )
-    {
-        cupiCava.ordenarVinosPorAnhoElaboracion( );
-        actualizarLista( );
+    public void ordenarPorAnhoElaboracion() {
+        cupiCava.ordenarVinosPorAnhoElaboracion();
+        actualizarLista();
     }
 
     /**
      * Ordena la lista de vinos por lugar de origen.
      */
-    public void ordenarPorLugarOrigen( )
-    {
-        cupiCava.ordenarVinosPorLugarOrigen( );
-        actualizarLista( );
+    public void ordenarPorLugarOrigen() {
+        cupiCava.ordenarVinosPorLugarOrigen();
+        actualizarLista();
     }
-
 
     /**
      * Busca el vino por el nombre dado por el usuario.
      */
-    public void buscarPorNombre( )
-    {
-        String nombre = JOptionPane.showInputDialog( null, "Nombre: ", "Buscar vino por nombre", JOptionPane.QUESTION_MESSAGE );
-        if( nombre != null && !nombre.isEmpty( ) )
-        {
-            cupiCava.ordenarVinosPorNombre( );
-            actualizarLista( );
-            Vino vino = cupiCava.buscarBinarioPorNombre( nombre );
-            if( vino != null )
-            {
-                panelListaVinos.seleccionar( vino.darNombre( ) );
-            }
-            else
-            {
-                JOptionPane.showMessageDialog( this, "No se encontró ningún vino con el nombre dado.", "Buscar vino por nombre", JOptionPane.INFORMATION_MESSAGE );
+    public void buscarPorNombre() {
+        String nombre = JOptionPane.showInputDialog(null, "Nombre: ", "Buscar vino por nombre",
+                JOptionPane.QUESTION_MESSAGE);
+        if (nombre != null && !nombre.isEmpty()) {
+            cupiCava.ordenarVinosPorNombre();
+            actualizarLista();
+            Vino vino = cupiCava.buscarBinarioPorNombre(nombre);
+            if (vino != null) {
+                panelListaVinos.seleccionar(vino.darNombre());
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontr ningn vino con el nombre dado.",
+                        "Buscar vino por nombre", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
@@ -274,104 +255,99 @@ public class InterfazCupiCava extends JFrame
     /**
      * Busca los vinos con el tipo dado por el usuario.
      */
-    public void buscarPorTipo( )
-    {
-        String[] tipos = new String[]{ Vino.SECO, Vino.ABOCADO, Vino.SEMI_SECO, Vino.SEMI_DULCE, Vino.DULCE };
-        String tipo = ( String )JOptionPane.showInputDialog( null, "Tipo: ", "Buscar vinos de un tipo", JOptionPane.QUESTION_MESSAGE, null, tipos, Vino.SECO );
-        if( tipo != null )
-        {
-
-            ArrayList vinosTipo = cupiCava.buscarVinosDeTipo( tipo );
-            ArrayList vinos = new ArrayList( );
-            for( int i = 0; i < vinosTipo.size( ); i++ )
-            {
-                Vino actual = ( Vino ) vinosTipo.get( i );
-                vinos.add( actual.darNombre( ) );
-            }
-            
-            panelListaVinos.refrescarLista( vinos );
+    public void buscarPorTipo() {
+        String[] tipos = new String[] { Vino.SECO, Vino.ABOCADO, Vino.SEMI_SECO, Vino.SEMI_DULCE, Vino.DULCE };
+        String tipo = (String) JOptionPane.showInputDialog(null, "Tipo: ", "Buscar vinos de un tipo",
+                JOptionPane.QUESTION_MESSAGE, null, tipos, Vino.SECO);
+        if (tipo != null) {
+            ArrayList<Vino> vinosTipo = cupiCava.buscarVinosDeTipo(tipo);
+            panelListaVinos.refrescarLista(vinosTipo);
         }
     }
 
     /**
-     * Busca el vino más dulce.
+     * Busca el vino ms dulce.
      */
-    public void buscarVinoMasDulce( )
-    {
-        Vino vino = cupiCava.buscarVinoMasDulce( );
-        if( vino != null )
-        {
-            actualizarLista( );
-            panelListaVinos.seleccionar( vino.darNombre( ) );
-        }
-        else
-        {
-            JOptionPane.showMessageDialog( this, "La cava no tiene vinos.", "Buscar vino más dulce", JOptionPane.ERROR_MESSAGE );
+    public void buscarVinoMasDulce() {
+        Vino vino = cupiCava.buscarVinoMasDulce();
+        if (vino != null) {
+            actualizarLista();
+            panelListaVinos.seleccionar(vino.darNombre());
+        } else {
+            JOptionPane.showMessageDialog(this, "La cava no tiene vinos.", "Buscar vino ms dulce",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
-     * Busca el vino más seco.
+     * Busca el vino ms seco.
      */
-    public void buscarVinoMasSeco( )
-    {
-        Vino vino = cupiCava.buscarVinoMasSeco( );
-        if( vino != null )
-        {
-            actualizarLista( );
-            panelListaVinos.seleccionar( vino.darNombre( ) );
-        }
-        else
-        {
-            JOptionPane.showMessageDialog( this, "La cava no tiene vinos.", "Buscar vino más seco", JOptionPane.ERROR_MESSAGE );
+    public void buscarVinoMasSeco() {
+        Vino vino = cupiCava.buscarVinoMasSeco();
+        if (vino != null) {
+            actualizarLista();
+            panelListaVinos.seleccionar(vino.darNombre());
+        } else {
+            JOptionPane.showMessageDialog(this, "La cava no tiene vinos.", "Buscar vino mÃ¡s seco",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
     /**
      * Agrega una nuevo vino a la cava con los valores dados.
-     * @param pNombre Nombre del vino. pNombre != null && pNombre != "".
-     * @param pPresentacion Presentación del vino. pPresentacion != null && pPresentacion != "" && (pPresentacion == BOTELLA || pPresentacion == BARRIL).
-     * @param pAnhoElaboracion Año de elaboración del vino. pAnhoElaboracion > 0.
-     * @param pContenidoAzucar Contenido en azúcar del vino. pContenidoAzucar >= 0
-     * @param pTipo Tipo de vino de acuerdo a su contenido en azúcar. pTipo != null && pTipo != "" && (pTipo == SECO || pTipo == ABOCADO || pTipo == SEMI_SECO || pTipo ==
-     *        SEMI_DULCE || pTipo == DULCE).
-     * @param pColor Color del vino. pColor != null && pColor != "" && (pColor == TINTO || pColor == ROSADO || pColor == BLANCO).
-     * @param pLugarOrigen Lugar de origen del vino. lugarElaboracion != null y lugarElaboracion != "".
-     * @param pImagen Imagen del vino. pImagen != null && pImagen != "".
+     * 
+     * @param pNombre          Nombre del vino. pNombre != null && pNombre != "".
+     * @param pPresentacion    Presentaciï¿½n del vino. pPresentacion != null && p
+     *                         resentacion != "" && (pPresentacion == BOTELLA || p
+     *                         resentacion == BARRIL).
+     * @param pAnhoElaboracion Aï¿½o de elaboraciï¿½n del vino. pAnhoElaboracion > 0.
+     *                         
+     * 
+     * 
+     * 
+     * 
+     * @param pContenidoAzucar Contenido en azï¿½car del vino. pContenidoAzucar >= 0
+     * @param pTipo            Tipo de vino de acuerdo a su contenido en azï¿½car. p
+     *                         ipo != null && pTipo != "" && (pTipo == SECO || p
+     *                         ipo == ABOCADO || pTipo == SEMI_SECO || pTipo ==
+     *                         SEMI_DULCE || pTipo == DULCE).
+     * @param pColor           Color del vino. pColor != null && pColor != "" &&
+     *                         (pColor == TINTO || pColor == ROSADO || pColor ==
+     *                         BLANCO).
+     * @param pLugarOrigen     Lugar de origen del vino. lugarElaboracion != null y
+     *                         lugarElaboracion != "".
+     * @param pImagen          Imagen del vino. pImagen != null && pImagen != "".
      */
-    public void agregarVino( String pNombre, String pPresentacion, int pAnhoElaboracion, double pContenidoAzucar, String pTipo, String pColor, String pLugarOrigen, String pImagen )
-    {
-        boolean agregada = cupiCava.agregarVino( pNombre, pPresentacion, pAnhoElaboracion, pContenidoAzucar, pTipo, pColor, pLugarOrigen, pImagen );
-        if( agregada )
-        {
-            actualizarLista( );
-        }
-        else
-        {
-            JOptionPane.showMessageDialog( this, "Ya existe en la cava un vino con el nombre dado.", "Agregar vino", JOptionPane.ERROR_MESSAGE );
+    public void agregarVino(String pNombre, String pPresentacion, int pAnhoElaboracion, double pContenidoAzucar,
+            String pTipo, String pColor, String pLugarOrigen, String pImagen) {
+        boolean agregada = cupiCava.agregarVino(pNombre, pPresentacion, pAnhoElaboracion, pContenidoAzucar, pTipo,
+                pColor, pLugarOrigen, pImagen);
+        if (agregada) {
+            actualizarLista();
+        } else {
+            JOptionPane.showMessageDialog(this, "Ya existe en la cava un vino con el nombre dado.", "Agregar vino",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
     // -----------------------------------------------------------------
-    // Puntos de Extensión
+    // Puntos de Extensiï¿½n
     // -----------------------------------------------------------------
 
     /**
-     * Método para la extensión 1.
+     * Mï¿½todo para la extensiï¿½n 1.
      */
-    public void reqFuncOpcion1( )
-    {
-        String resultado = cupiCava.metodo1( );
-        JOptionPane.showMessageDialog( this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
+    public void reqFuncOpcion1() {
+        String resultado = cupiCava.metodo1();
+        JOptionPane.showMessageDialog(this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
-     * Método para la extensión 2.
+     * Mï¿½todo para la extensiï¿½n 2.
      */
-    public void reqFuncOpcion2( )
-    {
-        String resultado = cupiCava.metodo2( );
-        JOptionPane.showMessageDialog( this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
+    public void reqFuncOpcion2() {
+        String resultado = cupiCava.metodo2();
+        JOptionPane.showMessageDialog(this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE);
     }
 
     // -----------------------------------------------------------------
@@ -379,12 +355,17 @@ public class InterfazCupiCava extends JFrame
     // -----------------------------------------------------------------
 
     /**
-     * Este método ejecuta la aplicación, creando una nueva interfaz.
-     * @param pArgs Argumentos para la ejecución de la aplicación. En este caso no son necesarios. pArgs != null.
+     * Este mï¿½todo ejecuta la aplicaciï¿½n, creando una nueva interfaz.
+     * 
+     * @param pArgs Argumentos para la ejecuciï¿½n de la aplicaciï¿½n. En este caso no 
+     *              
+     * 
+     * 
+     * 
+     *              on necesarios. pArgs != null.
      */
-    public static void main( String[] pArgs )
-    {
-        InterfazCupiCava interfaz = new InterfazCupiCava( );
-        interfaz.setVisible( true );
+    public static void main(String[] pArgs) {
+        InterfazCupiCava interfaz = new InterfazCupiCava();
+        interfaz.setVisible(true);
     }
 }
