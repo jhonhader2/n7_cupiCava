@@ -1,0 +1,4 @@
+# Ignorar todos los archivos en cualquier directorio llamado "docs"
+/docs/
+/docs/**/*
+
